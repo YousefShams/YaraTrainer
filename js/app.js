@@ -167,7 +167,7 @@ function activeSection()
 
   else //if we cant hide the nav-menu
   {
-    if (isListOpened)
+    if (isListOpened && isOpenable)
     navMenu.style.display='flex';
     else
     navMenu.style.display='none';
@@ -199,9 +199,25 @@ Footer=document.querySelector('footer');
 sections=document.querySelectorAll('section'); //array of all section elements
 activeSectionBox= document.getElementById('active-section-box');
 navSectionsLen=0; //the number of the buttons on the nav menu
+activeSectionBox.innerHTML="المقدمة";
+let buttons = document.querySelectorAll(".button");
+
 //...................
 
 addNewNavSections(); // 1) adding the sections to the HTML file dynamically
+
+
+if(screen.width < 650) {
+  
+  buttons.forEach(function (button) {
+    button.classList.add("mobile");
+  } )
+}
+
+else {
+  buttons.forEach(function (button) {
+    button.classList.add("computer"); })
+}
 
 
 /* 2)Scrolling to the section function is up there and it doesnt to be called here becuase
